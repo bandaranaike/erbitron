@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 
-Route::inertia('/', 'Welcome')->name('home');
+Route::inertia('/', 'Home')->name('home');
 
 Route::middleware([
     'auth',
