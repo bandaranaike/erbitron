@@ -1,4 +1,4 @@
 [mcp_servers.laravel-boost]
-command = "wsl.exe"
-args = ["/usr/bin/php8.4", "/var/www/erbitron/artisan", "boost:mcp"]
+command = "/usr/bin/php8.4"
+args = ["/var/www/erbitron/artisan", "boost:mcp"]
 cwd = "/var/www/erbitron"

@@ -1,233 +1,335 @@
 <script lang="ts">
     import AppHead from '@/components/AppHead.svelte';
-    import PublicHeader from '@/components/PublicHeader.svelte';
     import PublicFooter from '@/components/PublicFooter.svelte';
+    import PublicHeader from '@/components/PublicHeader.svelte';
     import { Button } from '@/components/ui/button';
+    import { toUrl } from '@/lib/utils';
+    import { login } from '@/routes';
     import {
-        Globe,
-        Smartphone,
-        Code2,
-        Layers,
-        Zap,
-        Shield,
-        Star,
+        Activity,
         ArrowRight,
-        Check,
-        Play,
+        BadgeCheck,
+        Blocks,
+        BriefcaseBusiness,
+        Globe,
+        HeartPulse,
+        Landmark,
+        MonitorSmartphone,
+        ShoppingCart,
+        Sparkles,
+        SwatchBook,
+        Workflow,
     } from 'lucide-svelte/icons';
 
-    const services = [
+    const coreServices = [
+        {
+            icon: SwatchBook,
+            title: 'Web Designing',
+            description:
+                'Modern marketing websites, landing pages, and brand-led interfaces designed to feel polished and convert with clarity.',
+        },
         {
             icon: Globe,
             title: 'Web Development',
             description:
-                'Stunning, responsive websites built with cutting-edge technologies for maximum performance.',
+                'Fast, scalable websites and web platforms built for businesses that need reliable performance and a clean user journey.',
         },
         {
-            icon: Smartphone,
-            title: 'Mobile Apps',
+            icon: MonitorSmartphone,
+            title: 'App Development',
             description:
-                'Native and cross-platform mobile applications that deliver exceptional user experiences.',
+                'Mobile and desktop applications shaped around real workflows, clear navigation, and maintainable product architecture.',
         },
         {
-            icon: Layers,
-            title: 'Web Applications',
+            icon: Blocks,
+            title: 'Custom Software Solutions',
             description:
-                'Complex, scalable web apps designed to streamline operations and drive growth.',
-        },
-        {
-            icon: Code2,
-            title: 'Custom Software',
-            description:
-                'Tailored software solutions crafted to meet your unique business requirements.',
+                'Purpose-built internal systems, dashboards, portals, and process automation tailored to your business operations.',
         },
     ];
 
-    const stats = [
-        { value: '50+', label: 'Projects Delivered' },
-        { value: '98%', label: 'Client Satisfaction' },
-        { value: '24/7', label: 'Support Available' },
-        { value: '5+', label: 'Years Experience' },
-    ];
-
-    const testimonials = [
+    const solutionAreas = [
         {
-            name: 'Sarah Mitchell',
-            role: 'CEO, TechStart Inc.',
-            content:
-                'Erbitron transformed our digital presence. The team delivered a stunning web app that exceeded all expectations.',
-            rating: 5,
+            icon: HeartPulse,
+            title: 'Hospital Applications',
+            summary:
+                'Patient flow, records access, appointment coordination, and operational visibility for healthcare teams.',
         },
         {
-            name: 'James Chen',
-            role: 'Founder, GrowthLabs',
-            content:
-                'Working with Erbitron was seamless. They understood our vision and delivered a product that truly stands out.',
-            rating: 5,
+            icon: ShoppingCart,
+            title: 'Online Shopping Carts',
+            summary:
+                'Storefronts, order management, stock visibility, payments, and customer-facing buying journeys.',
         },
         {
-            name: 'Maria Garcia',
-            role: 'CTO, Innovate Co.',
-            content:
-                'The attention to detail and technical expertise at Erbitron is unmatched. Highly recommend for any project.',
-            rating: 5,
+            icon: Landmark,
+            title: 'Banking Web And App Platforms',
+            summary:
+                'Secure customer portals, finance dashboards, transaction flows, and polished digital banking experiences.',
+        },
+        {
+            icon: BriefcaseBusiness,
+            title: 'Business Operations Software',
+            summary:
+                'Admin panels, workflow tools, reporting systems, and software that reduces manual operational work.',
         },
     ];
 
-    const pricingPlans = [
+    const deliveryPoints = [
+        'Responsive websites and conversion-focused landing pages',
+        'Custom web applications for business operations and customer portals',
+        'Mobile app interfaces for service, commerce, and finance',
+        'Desktop applications for teams that need dedicated workflows',
+        'Hospital and healthcare management software experiences',
+        'Shopping cart, checkout, and e-commerce administration systems',
+        'Banking-inspired UI systems with trust, structure, and clarity',
+        'Ongoing UI refreshes, redesigns, and software modernization work',
+    ];
+
+    const workingStyle = [
         {
-            name: 'Starter',
-            description: 'Perfect for small projects',
-            price: '999',
-            features: [
-                'Landing Page',
-                'Basic SEO',
-                'Mobile Responsive',
-                'Contact Form',
-                '2 Weeks Delivery',
-            ],
+            title: 'Understand the workflow',
+            detail: 'We start from the real business flow, the user roles, and the screens that matter most to day-to-day work.',
         },
         {
-            name: 'Professional',
-            description: 'For growing businesses',
-            price: '2999',
-            popular: true,
-            features: [
-                'Custom Web Application',
-                'Advanced SEO',
-                'API Integration',
-                'Admin Dashboard',
-                '4 Weeks Delivery',
-                '3 Months Support',
-            ],
+            title: 'Design with intent',
+            detail: 'Interfaces are shaped around clarity, trust, and speed, with a visual system that feels current instead of generic.',
         },
         {
-            name: 'Enterprise',
-            description: 'Full-scale solutions',
-            price: 'Custom',
-            features: [
-                'Everything in Pro',
-                'Dedicated Team',
-                'Advanced Analytics',
-                'Custom Integrations',
-                'Priority Support',
-                'Ongoing Maintenance',
-            ],
+            title: 'Build the right product',
+            detail: 'From websites to operational platforms, each build is structured to scale cleanly and stay maintainable.',
+        },
+        {
+            title: 'Refine for long-term use',
+            detail: 'We keep the product consistent across screens, devices, and future feature growth so the experience stays strong.',
         },
     ];
 </script>
 
-<AppHead title="Erbitron - Digital Solutions Agency" />
+<AppHead title="Erbitron | Software Solutions" />
 
 <div class="min-h-screen bg-background text-foreground">
     <PublicHeader />
 
-    <!-- Hero Section -->
     <section
-        class="relative overflow-hidden px-4 pt-32 pb-20 md:pt-44 md:pb-32"
+        class="relative overflow-hidden px-4 pt-28 pb-20 md:pt-36 md:pb-24"
     >
-        <div class="absolute inset-0 overflow-hidden">
-            <div
-                class="absolute left-1/4 top-1/4 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[100px] dark:bg-primary/30"
-            ></div>
-            <div
-                class="absolute right-1/4 top-1/3 h-[400px] w-[400px] rounded-full bg-cyan-500/20 blur-[100px] dark:bg-cyan-500/30"
-            ></div>
-            <div
-                class="absolute bottom-1/4 left-1/2 h-[300px] w-[300px] rounded-full bg-blue-500/10 blur-[80px]"
-            ></div>
-        </div>
+        <div
+            class="hero-noise pointer-events-none absolute inset-0 opacity-80"
+        ></div>
+        <div
+            class="pointer-events-none absolute -top-32 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-primary/18 blur-[110px] dark:bg-primary/22"
+        ></div>
+        <div
+            class="pointer-events-none absolute right-0 bottom-8 h-64 w-64 rounded-full bg-black/6 blur-[100px] dark:bg-black/50"
+        ></div>
 
-        <div class="relative z-10 mx-auto max-w-6xl">
-            <div class="text-center">
+        <div
+            class="relative mx-auto flex max-w-7xl flex-col gap-12 lg:flex-row lg:items-center lg:gap-16"
+        >
+            <div class="max-w-3xl flex-1">
                 <div
-                    class="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/50 px-4 py-1.5 text-sm backdrop-blur"
+                    class="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-primary shadow-[0_18px_55px_rgba(245,116,32,0.12)] backdrop-blur dark:bg-black/55"
                 >
-                    <span
-                        class="h-2 w-2 rounded-full bg-green-500 animate-pulse"
-                    ></span>
-                    <span class="text-muted-foreground"
-                        >Now accepting new projects</span
-                    >
+                    <Sparkles class="h-3.5 w-3.5" />
+                    Modern software design and development
                 </div>
 
                 <h1
-                    class="mb-6 text-4xl font-bold leading-tight tracking-tight md:text-6xl lg:text-7xl"
+                    class="max-w-4xl text-4xl font-semibold tracking-[-0.06em] text-balance md:text-6xl lg:text-7xl"
                 >
-                    We build digital<br />
-                    <span class="text-gradient-full">experiences</span><br />
-                    that convert
+                    Design-forward software for
+                    <span class="text-gradient-brand"
+                        >web, mobile, desktop, healthcare, commerce, and banking</span
+                    >.
                 </h1>
 
                 <p
-                    class="mx-auto mb-10 max-w-2xl text-lg text-muted-foreground md:text-xl"
+                    class="mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg"
                 >
-                    Award-winning digital agency specializing in websites, web
-                    apps, mobile apps, and custom software solutions.
+                    Erbitron creates modern digital products for businesses that
+                    need stronger websites, sharper interfaces, and custom
+                    systems built around real work. From web designing to
+                    full-scale applications, the focus stays on clarity, speed,
+                    and long-term usability.
                 </p>
 
-                <div
-                    class="flex flex-col items-center justify-center gap-4 sm:flex-row"
-                >
-                    <Button
-                        size="lg"
-                        class="h-12 gap-2 bg-gradient-to-r from-primary to-cyan-500 hover:opacity-90"
+                <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                    <a
+                        href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
+                        class="inline-flex"
                     >
-                        Start Your Project
-                        <ArrowRight class="h-4 w-4" />
-                    </Button>
-                    <Button size="lg" variant="outline" class="h-12 gap-2">
-                        <Play class="h-4 w-4" />
-                        Watch Showreel
-                    </Button>
+                        <Button
+                            size="lg"
+                            class="h-12 rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-[0_18px_60px_rgba(245,116,32,0.3)] hover:bg-primary/90"
+                        >
+                            Discuss Your Project
+                            <ArrowRight class="h-4 w-4" />
+                        </Button>
+                    </a>
+
+                    <a href="#solutions" class="inline-flex">
+                        <Button
+                            size="lg"
+                            variant="outline"
+                            class="h-12 rounded-full border-border/70 bg-background/85 px-7 text-sm font-semibold backdrop-blur hover:bg-accent"
+                        >
+                            View Solutions
+                        </Button>
+                    </a>
+
+                    <a
+                        href={toUrl(login())}
+                        class="inline-flex items-center rounded-full px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                        Client sign in
+                    </a>
+                </div>
+
+                <div class="mt-10 flex flex-wrap gap-3">
+                    {#each deliveryPoints.slice(0, 4) as point}
+                        <div
+                            class="rounded-full border border-border/70 bg-card/90 px-4 py-2 text-sm text-muted-foreground shadow-[0_12px_32px_rgba(15,15,15,0.05)] dark:shadow-none"
+                        >
+                            {point}
+                        </div>
+                    {/each}
                 </div>
             </div>
 
-            <!-- Hero Visual -->
-            <div class="relative mt-16">
-                <div
-                    class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"
-                ></div>
-                <div
-                    class="relative overflow-hidden rounded-2xl border border-border bg-card"
-                >
+            <div class="relative flex-1">
+                <div class="surface-shell overflow-hidden p-4 md:p-6">
                     <div
-                        class="flex items-center gap-2 border-b border-border px-4 py-3"
+                        class="rounded-[1.75rem] border border-white/70 bg-white/92 p-5 shadow-[0_24px_70px_rgba(22,22,22,0.12)] dark:border-white/10 dark:bg-[#111111]/92 dark:shadow-[0_32px_90px_rgba(0,0,0,0.45)]"
                     >
-                        <div class="flex gap-2">
-                            <div
-                                class="h-3 w-3 rounded-full bg-red-500/80"
-                            ></div>
-                            <div
-                                class="h-3 w-3 rounded-full bg-yellow-500/80"
-                            ></div>
-                            <div
-                                class="h-3 w-3 rounded-full bg-green-500/80"
-                            ></div>
-                        </div>
                         <div
-                            class="flex-1 text-center text-xs text-muted-foreground"
+                            class="flex items-center justify-between border-b border-border/70 pb-4"
                         >
-                            dashboard.erbitron.com
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_12px_30px_rgba(245,116,32,0.35)]"
+                                >
+                                    <Workflow class="h-5 w-5" />
+                                </div>
+                                <div>
+                                    <p class="text-sm font-semibold">
+                                        Solution Studio
+                                    </p>
+                                    <p class="text-xs text-muted-foreground">
+                                        Structured around real delivery scope
+                                    </p>
+                                </div>
+                            </div>
+                            <div
+                                class="rounded-full border border-primary/15 bg-primary/8 px-3 py-1 text-xs font-medium text-primary"
+                            >
+                                Orange-led theme
+                            </div>
                         </div>
-                    </div>
-                    <div class="aspect-[16/9] p-8">
-                        <div class="grid h-full grid-cols-3 gap-4">
-                            <div
-                                class="rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20"
-                            ></div>
-                            <div
-                                class="rounded-xl bg-gradient-to-br from-cyan-500/20 to-cyan-500/5 border border-cyan-500/20"
-                            ></div>
-                            <div
-                                class="rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-500/5 border border-blue-500/20"
-                            ></div>
-                            <div
-                                class="col-span-2 rounded-xl bg-muted border border-border"
-                            ></div>
-                            <div
-                                class="rounded-xl bg-gradient-to-br from-primary/20 to-cyan-500/20 border border-border"
-                            ></div>
+
+                        <div class="mt-5 grid gap-4 md:grid-cols-[1.3fr_0.9fr]">
+                            <div class="surface-panel p-5">
+                                <div
+                                    class="flex items-center justify-between gap-3"
+                                >
+                                    <div>
+                                        <p
+                                            class="text-xs font-semibold uppercase tracking-[0.22em] text-primary"
+                                        >
+                                            Core Scope
+                                        </p>
+                                        <h2
+                                            class="mt-2 text-2xl font-semibold tracking-[-0.04em]"
+                                        >
+                                            Software solutions shaped for
+                                            business use
+                                        </h2>
+                                    </div>
+                                    <BadgeCheck class="h-8 w-8 text-primary" />
+                                </div>
+
+                                <div class="mt-6 grid gap-3">
+                                    {#each coreServices as service}
+                                        <div
+                                            class="rounded-[1.35rem] border border-border/70 bg-background/70 p-4 dark:bg-black/35"
+                                        >
+                                            <div class="flex items-start gap-3">
+                                                <div
+                                                    class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/12 text-primary"
+                                                >
+                                                    <service.icon
+                                                        class="h-5 w-5"
+                                                    />
+                                                </div>
+                                                <div class="space-y-1">
+                                                    <h3 class="font-semibold">
+                                                        {service.title}
+                                                    </h3>
+                                                    <p
+                                                        class="text-sm leading-6 text-muted-foreground"
+                                                    >
+                                                        {service.description}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {/each}
+                                </div>
+                            </div>
+
+                            <div class="grid gap-4">
+                                <div class="surface-panel p-5">
+                                    <p
+                                        class="text-xs font-semibold uppercase tracking-[0.22em] text-primary"
+                                    >
+                                        Coverage
+                                    </p>
+                                    <div class="mt-4 space-y-3">
+                                        {#each solutionAreas.slice(0, 2) as area}
+                                            <div
+                                                class="rounded-[1.2rem] border border-border/70 bg-background/70 p-4 dark:bg-black/35"
+                                            >
+                                                <div
+                                                    class="mb-2 flex items-center gap-3"
+                                                >
+                                                    <div
+                                                        class="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary/10 text-primary"
+                                                    >
+                                                        <area.icon
+                                                            class="h-4.5 w-4.5"
+                                                        />
+                                                    </div>
+                                                    <h3 class="font-semibold">
+                                                        {area.title}
+                                                    </h3>
+                                                </div>
+                                                <p
+                                                    class="text-sm leading-6 text-muted-foreground"
+                                                >
+                                                    {area.summary}
+                                                </p>
+                                            </div>
+                                        {/each}
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="overflow-hidden rounded-[1.7rem] border border-primary/15 bg-primary p-5 text-primary-foreground shadow-[0_18px_50px_rgba(245,116,32,0.25)]"
+                                >
+                                    <p
+                                        class="text-xs font-semibold uppercase tracking-[0.22em] text-white/75"
+                                    >
+                                        Built for modern delivery
+                                    </p>
+                                    <p
+                                        class="mt-3 text-xl font-semibold tracking-[-0.04em]"
+                                    >
+                                        Cleaner UI, stronger contrast, and
+                                        sharper product presentation across both
+                                        light and dark themes.
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -235,54 +337,44 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="px-4 py-16 md:py-20">
-        <div class="mx-auto max-w-6xl">
-            <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
-                {#each stats as stat}
-                    <div class="text-center">
-                        <div
-                            class="mb-2 text-3xl font-bold md:text-5xl text-gradient-full"
-                        >
-                            {stat.value}
-                        </div>
-                        <div class="text-sm text-muted-foreground">
-                            {stat.label}
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="px-4 py-20 md:py-32">
-        <div class="mx-auto max-w-6xl">
-            <div class="mb-16 text-center">
-                <h2 class="mb-4 text-3xl font-bold md:text-5xl">
-                    What We Build
+    <section id="services" class="px-4 py-16 md:py-24">
+        <div class="mx-auto max-w-7xl">
+            <div class="max-w-3xl">
+                <p
+                    class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
+                >
+                    Services
+                </p>
+                <h2
+                    class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
+                >
+                    Design and development services that fit how businesses
+                    actually operate.
                 </h2>
-                <p class="mx-auto max-w-2xl text-muted-foreground">
-                    From concept to launch, we deliver exceptional digital
-                    products that drive results.
+                <p
+                    class="mt-5 max-w-2xl text-base leading-8 text-muted-foreground"
+                >
+                    The work spans branded websites, custom platforms,
+                    operational software, and product interfaces that need to be
+                    trusted by both end users and internal teams.
                 </p>
             </div>
 
-            <div class="grid gap-6 md:grid-cols-2">
-                {#each services as feature}
-                    <div
-                        class="group relative rounded-2xl border border-border bg-card p-8 transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5"
-                    >
+            <div class="mt-12 grid gap-5 lg:grid-cols-2">
+                {#each coreServices as service}
+                    <div class="surface-panel p-6 md:p-7">
                         <div
-                            class="mb-6 inline-flex rounded-xl bg-gradient-to-br from-primary/10 to-cyan-500/10 p-4"
+                            class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary"
                         >
-                            <feature.icon class="h-8 w-8 text-primary" />
+                            <service.icon class="h-5 w-5" />
                         </div>
-                        <h3 class="mb-3 text-xl font-semibold">
-                            {feature.title}
+                        <h3
+                            class="mt-6 text-2xl font-semibold tracking-[-0.04em]"
+                        >
+                            {service.title}
                         </h3>
-                        <p class="text-muted-foreground">
-                            {feature.description}
+                        <p class="mt-3 text-sm leading-7 text-muted-foreground">
+                            {service.description}
                         </p>
                     </div>
                 {/each}
@@ -290,219 +382,193 @@
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section id="why-us" class="px-4 py-20 md:py-32">
-        <div class="mx-auto max-w-6xl">
-            <div class="grid items-center gap-12 lg:grid-cols-2">
-                <div>
-                    <h2 class="mb-6 text-3xl font-bold md:text-5xl">
-                        Why choose <span class="text-gradient-full"
-                            >Erbitron</span
-                        >?
-                    </h2>
-                    <p class="mb-8 text-lg text-muted-foreground">
-                        We combine technical expertise with creative vision to
-                        deliver solutions that truly stand out in the digital
-                        landscape.
+    <section id="solutions" class="px-4 py-16 md:py-24">
+        <div class="mx-auto max-w-7xl">
+            <div
+                class="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+            >
+                <div class="max-w-3xl">
+                    <p
+                        class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
+                    >
+                        Solution Areas
                     </p>
+                    <h2
+                        class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
+                    >
+                        Focused products for sectors that need structure, trust,
+                        and speed.
+                    </h2>
+                </div>
+                <p class="max-w-2xl text-sm leading-7 text-muted-foreground">
+                    Each solution area is framed with the same goal: clean
+                    design, understandable workflows, and a product that feels
+                    reliable from the first screen.
+                </p>
+            </div>
 
-                    <div class="space-y-4">
-                        {#each [{ icon: Zap, title: 'Lightning Fast', desc: 'Optimized performance for the best user experience' }, { icon: Shield, title: 'Secure & Reliable', desc: 'Enterprise-grade security built into every project' }, { icon: Star, title: 'Premium Quality', desc: 'Pixel-perfect designs with attention to every detail' }] as item}
+            <div class="grid gap-5 md:grid-cols-2">
+                {#each solutionAreas as area}
+                    <div class="surface-panel p-6 md:p-7">
+                        <div class="flex items-start gap-4">
                             <div
-                                class="flex gap-4 rounded-xl border border-border bg-card p-4"
+                                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary"
                             >
-                                <div
-                                    class="rounded-lg bg-gradient-to-br from-primary/10 to-cyan-500/10 p-3"
+                                <area.icon class="h-5 w-5" />
+                            </div>
+                            <div>
+                                <h3
+                                    class="text-xl font-semibold tracking-[-0.04em]"
                                 >
-                                    <item.icon class="h-5 w-5 text-primary" />
+                                    {area.title}
+                                </h3>
+                                <p
+                                    class="mt-3 text-sm leading-7 text-muted-foreground"
+                                >
+                                    {area.summary}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 py-16 md:py-24">
+        <div class="mx-auto max-w-7xl">
+            <div class="surface-shell p-6 md:p-8">
+                <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
+                    <div>
+                        <p
+                            class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
+                        >
+                            Delivery Scope
+                        </p>
+                        <h2
+                            class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
+                        >
+                            What Erbitron can deliver across your product
+                            landscape.
+                        </h2>
+                        <p
+                            class="mt-5 text-base leading-8 text-muted-foreground"
+                        >
+                            The scope is broad enough for redesigns, greenfield
+                            products, business platforms, and specialized
+                            software initiatives that need a more modern visual
+                            and interaction layer.
+                        </p>
+                    </div>
+
+                    <div class="grid gap-3 sm:grid-cols-2">
+                        {#each deliveryPoints as point}
+                            <div
+                                class="rounded-[1.4rem] border border-border/70 bg-card/92 p-4 text-sm leading-6 text-muted-foreground shadow-[0_14px_34px_rgba(15,15,15,0.05)] dark:bg-card/80 dark:shadow-none"
+                            >
+                                <div class="mb-3 flex items-center gap-2">
+                                    <Activity class="h-4 w-4 text-primary" />
+                                    <span class="font-semibold text-foreground">
+                                        Included
+                                    </span>
                                 </div>
-                                <div>
-                                    <h4 class="font-medium">{item.title}</h4>
-                                    <p class="text-sm text-muted-foreground">
-                                        {item.desc}
-                                    </p>
-                                </div>
+                                {point}
                             </div>
                         {/each}
                     </div>
                 </div>
-
-                <div class="relative">
-                    <div
-                        class="absolute -inset-4 bg-gradient-to-r from-primary/10 via-cyan-500/10 to-blue-500/10 blur-3xl rounded-3xl"
-                    ></div>
-                    <div
-                        class="relative rounded-2xl border border-border bg-card p-8"
-                    >
-                        <div class="space-y-4">
-                            {#each Array(4) as _}
-                                <div class="flex items-center gap-4">
-                                    <div
-                                        class="h-12 w-12 rounded-lg bg-muted"
-                                    ></div>
-                                    <div class="flex-1 space-y-2">
-                                        <div
-                                            class="h-3 w-3/4 rounded bg-muted"
-                                        ></div>
-                                        <div
-                                            class="h-2 w-1/2 rounded bg-muted/50"
-                                        ></div>
-                                    </div>
-                                </div>
-                            {/each}
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="px-4 py-20 md:py-32">
-        <div class="mx-auto max-w-6xl">
-            <div class="mb-16 text-center">
-                <h2 class="mb-4 text-3xl font-bold md:text-5xl">
-                    Client Stories
-                </h2>
-                <p class="mx-auto max-w-2xl text-muted-foreground">
-                    Don't just take our word for it. Here's what our clients
-                    have to say.
-                </p>
-            </div>
-
-            <div class="grid gap-6 md:grid-cols-3">
-                {#each testimonials as testimonial}
-                    <div class="rounded-2xl border border-border bg-card p-6">
-                        <div class="mb-4 flex gap-1">
-                            {#each Array(testimonial.rating) as _}
-                                <Star
-                                    class="h-4 w-4 fill-yellow-400 text-yellow-400"
-                                />
-                            {/each}
-                        </div>
-                        <p class="mb-6 text-muted-foreground">
-                            "{testimonial.content}"
-                        </p>
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="h-10 w-10 rounded-full bg-gradient-to-br from-primary to-cyan-500"
-                            ></div>
-                            <div>
-                                <div class="font-medium">
-                                    {testimonial.name}
-                                </div>
-                                <div class="text-sm text-muted-foreground">
-                                    {testimonial.role}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="px-4 py-20 md:py-32">
-        <div class="mx-auto max-w-6xl">
-            <div class="mb-16 text-center">
-                <h2 class="mb-4 text-3xl font-bold md:text-5xl">
-                    Simple Pricing
-                </h2>
-                <p class="mx-auto max-w-2xl text-muted-foreground">
-                    Transparent pricing with no hidden fees. Choose the plan
-                    that fits your needs.
-                </p>
-            </div>
-
-            <div class="grid gap-6 md:grid-cols-3">
-                {#each pricingPlans as plan}
-                    <div
-                        class="relative rounded-2xl border {plan.popular
-                            ? 'border-primary bg-gradient-to-b from-primary/10 to-transparent'
-                            : 'border-border bg-card'} p-8"
-                    >
-                        {#if plan.popular}
-                            <div
-                                class="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-primary to-cyan-500 px-4 py-1 text-xs font-medium text-white"
-                            >
-                                Most Popular
-                            </div>
-                        {/if}
-
-                        <div class="mb-6">
-                            <h3 class="text-xl font-semibold">{plan.name}</h3>
-                            <p class="text-sm text-muted-foreground">
-                                {plan.description}
-                            </p>
-                        </div>
-
-                        <div class="mb-6">
-                            {#if plan.price === 'Custom'}
-                                <span class="text-4xl font-bold">Custom</span>
-                            {:else}
-                                <span class="text-4xl font-bold"
-                                    >${plan.price}</span
-                                >
-                                <span class="text-muted-foreground"
-                                    >/project</span
-                                >
-                            {/if}
-                        </div>
-
-                        <ul class="mb-8 space-y-3">
-                            {#each plan.features as feature}
-                                <li
-                                    class="flex items-center gap-2 text-sm text-muted-foreground"
-                                >
-                                    <Check class="h-4 w-4 text-primary" />
-                                    {feature}
-                                </li>
-                            {/each}
-                        </ul>
-
-                        <Button
-                            class="w-full {plan.popular
-                                ? 'bg-gradient-to-r from-primary to-cyan-500 hover:opacity-90'
-                                : ''}"
-                        >
-                            Get Started
-                        </Button>
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="px-4 py-20 md:py-32">
-        <div class="mx-auto max-w-4xl">
-            <div class="relative overflow-hidden rounded-3xl">
-                <div
-                    class="absolute inset-0 bg-gradient-to-r from-primary via-cyan-500 to-blue-500"
-                ></div>
-                <div
-                    class="absolute inset-0 opacity-50"
-                    style="background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMiIvPjwvZz48L2c+PC9zdmc+');"
-                ></div>
-
-                <div
-                    class="relative px-8 py-16 text-center text-white md:px-16 md:py-24"
+    <section id="approach" class="px-4 py-16 md:py-24">
+        <div class="mx-auto max-w-7xl">
+            <div class="max-w-3xl">
+                <p
+                    class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
                 >
-                    <h2 class="mb-4 text-3xl font-bold md:text-4xl">
-                        Ready to bring your idea to life?
-                    </h2>
-                    <p class="mx-auto mb-8 max-w-xl text-lg text-white/80">
-                        Let's discuss your project and create something amazing
-                        together.
-                    </p>
-                    <Button
-                        size="lg"
-                        class="h-14 gap-2 bg-white text-primary hover:bg-white/90"
-                    >
-                        Start Your Project
-                        <ArrowRight class="h-5 w-5" />
-                    </Button>
+                    Working Style
+                </p>
+                <h2
+                    class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
+                >
+                    A product process centered on workflow clarity and modern
+                    presentation.
+                </h2>
+            </div>
+
+            <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                {#each workingStyle as step, index}
+                    <div class="surface-panel p-6">
+                        <div
+                            class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-sm font-semibold text-primary-foreground"
+                        >
+                            0{index + 1}
+                        </div>
+                        <h3 class="text-lg font-semibold tracking-[-0.03em]">
+                            {step.title}
+                        </h3>
+                        <p class="mt-3 text-sm leading-7 text-muted-foreground">
+                            {step.detail}
+                        </p>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </section>
+
+    <section class="px-4 pt-10 pb-20 md:pt-14 md:pb-28">
+        <div class="mx-auto max-w-7xl">
+            <div
+                class="overflow-hidden rounded-[2rem] border border-primary/15 bg-[linear-gradient(135deg,rgba(245,116,32,0.98),rgba(255,151,70,0.92))] px-6 py-10 text-primary-foreground shadow-[0_22px_70px_rgba(245,116,32,0.28)] md:px-10 md:py-12"
+            >
+                <div
+                    class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
+                >
+                    <div class="max-w-3xl">
+                        <p
+                            class="text-sm font-semibold uppercase tracking-[0.26em] text-white/75"
+                        >
+                            Start a project
+                        </p>
+                        <h2
+                            class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
+                        >
+                            Need a modern website or a custom software product
+                            aligned with your business scope?
+                        </h2>
+                        <p
+                            class="mt-4 max-w-2xl text-sm leading-7 text-white/85"
+                        >
+                            Erbitron can help shape the interface, the product
+                            structure, and the delivery direction for your next
+                            website, application, or software platform.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-3 sm:flex-row">
+                        <a
+                            href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
+                            class="inline-flex"
+                        >
+                            <Button
+                                size="lg"
+                                class="h-12 rounded-full bg-black px-7 text-sm font-semibold text-white shadow-none hover:bg-black/85 dark:bg-white dark:text-black dark:hover:bg-white/90"
+                            >
+                                Contact Erbitron
+                            </Button>
+                        </a>
+
+                        <a href={toUrl(login())} class="inline-flex">
+                            <Button
+                                size="lg"
+                                variant="outline"
+                                class="h-12 rounded-full border-white/40 bg-white/10 px-7 text-sm font-semibold text-white hover:bg-white/14"
+                            >
+                                Client Access
+                            </Button>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

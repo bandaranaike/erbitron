@@ -1,53 +1,75 @@
-<script lang="ts">
-</script>
+<footer class="border-t border-border/70 bg-card/65 backdrop-blur">
+    <div class="mx-auto max-w-7xl px-4 py-12">
+        <div class="flex flex-col gap-8 md:flex-row md:justify-between">
+            <div class="max-w-xl">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-primary-foreground shadow-[0_12px_28px_rgba(245,116,32,0.22)]"
+                    >
+                        E
+                    </div>
+                    <div>
+                        <span class="block text-lg font-semibold">Erbitron</span
+                        >
+                        <span class="block text-sm text-muted-foreground">
+                            Web, app, desktop, healthcare, commerce, and banking
+                            software solutions
+                        </span>
+                    </div>
+                </div>
 
-<footer class="border-t border-white/10 bg-[#030014]">
-    <div class="mx-auto max-w-6xl px-4 py-12">
-        <div
-            class="flex flex-col items-center justify-between gap-6 md:flex-row"
-        >
-            <div class="flex items-center gap-2">
-                <div
-                    class="h-8 w-8 rounded-lg bg-gradient-to-br from-purple-500 to-cyan-500"
-                ></div>
-                <span class="text-lg font-bold">Erbitron</span>
+                <p class="mt-5 text-sm leading-7 text-muted-foreground">
+                    Modern digital products with a cleaner orange-and-black
+                    visual direction, stronger contrast, and a focus on
+                    practical business software.
+                </p>
             </div>
 
-            <nav class="flex gap-8 text-sm">
+            <nav class="flex flex-col gap-3 text-sm">
                 <a
                     href="#services"
-                    class="text-white/50 transition-colors hover:text-white"
+                    class="text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Services
                 </a>
                 <a
-                    href="#testimonials"
-                    class="text-white/50 transition-colors hover:text-white"
+                    href="#solutions"
+                    class="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                    Testimonials
+                    Solutions
                 </a>
                 <a
-                    href="#pricing"
-                    class="text-white/50 transition-colors hover:text-white"
+                    href="#approach"
+                    class="text-muted-foreground transition-colors hover:text-foreground"
                 >
-                    Pricing
+                    Approach
                 </a>
             </nav>
 
-            <div class="text-sm text-white/50">
+            <div class="space-y-3 text-sm">
+                <p class="font-medium text-foreground">Connect</p>
                 <a
                     href="mailto:hello@erbitron.com"
-                    class="transition-colors hover:text-white"
+                    class="block text-muted-foreground transition-colors hover:text-foreground"
                 >
                     hello@erbitron.com
+                </a>
+                <a
+                    href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
+                    class="block text-muted-foreground transition-colors hover:text-foreground"
+                >
+                    Start a project discussion
                 </a>
             </div>
         </div>
 
         <div
-            class="mt-8 border-t border-white/10 pt-8 text-center text-sm text-white/30"
+            class="mt-10 flex flex-col gap-3 border-t border-border/70 pt-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between"
         >
-            &copy; {new Date().getFullYear()} Erbitron. All rights reserved.
+            <span
+                >&copy; {new Date().getFullYear()} Erbitron. All rights reserved.</span
+            >
+            <span>Built for modern software delivery and UI refresh work.</span>
         </div>
     </div>
 </footer>
