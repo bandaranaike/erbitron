@@ -1,27 +1,28 @@
-<footer class="border-t border-border/70 bg-card/65 backdrop-blur">
-    <div class="mx-auto max-w-7xl px-4 py-12">
-        <div class="flex flex-col gap-8 md:flex-row md:justify-between">
+<script lang="ts">
+    import AppLogoIcon from '@/components/AppLogoIcon.svelte';
+</script>
+
+<footer class="border-t border-border/70 backdrop-blur-md bg-[#f3f5f5] dark:bg-[#06070a]">
+    <div class="mx-auto max-w-7xl px-4 py-16">
+        <div class="flex flex-col gap-12 md:flex-row md:justify-between">
             <div class="max-w-xl">
-                <div class="flex items-center gap-3">
-                    <div
-                        class="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-primary-foreground shadow-[0_12px_28px_rgba(245,116,32,0.22)]"
-                    >
-                        E
-                    </div>
+                <div class="flex items-center gap-4">
                     <div>
-                        <span class="block text-lg font-semibold">Erbitron</span
-                        >
-                        <span class="block text-sm text-muted-foreground">
-                            Web, app, desktop, healthcare, commerce, and banking
-                            software solutions
-                        </span>
+                        <img
+                            src="/images/logo/full-dark-logo.png"
+                            alt="Erbitron"
+                            class="h-64 w-auto transition-transform group-hover:scale-105 dark:hidden"
+                        />
+                        <img
+                            src="/images/logo/full-light-logo.png"
+                            alt="Erbitron"
+                            class="hidden h-64 w-auto transition-transform group-hover:scale-105 dark:block"
+                        />
                     </div>
                 </div>
 
-                <p class="mt-5 text-sm leading-7 text-muted-foreground">
-                    Modern digital products with a cleaner orange-and-black
-                    visual direction, stronger contrast, and a focus on
-                    practical business software.
+                <p class="mt-6 text-base leading-relaxed text-muted-foreground">
+                    We partner with forward-thinking companies to design, build, and scale high-performance digital products.
                 </p>
             </div>
 
@@ -66,9 +67,7 @@
         <div
             class="mt-10 flex flex-col gap-3 border-t border-border/70 pt-6 text-sm text-muted-foreground md:flex-row md:items-center md:justify-between"
         >
-            <span
-                >&copy; {new Date().getFullYear()} Erbitron. All rights reserved.</span
-            >
+            <span>&copy; {new Date().getFullYear()} Erbitron. All rights reserved.</span>
             <span>Built for modern software delivery and UI refresh work.</span>
         </div>
     </div>

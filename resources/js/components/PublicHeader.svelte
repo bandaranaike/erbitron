@@ -1,32 +1,30 @@
 <script lang="ts">
-    import { toUrl } from '@/lib/utils';
-    import { login } from '@/routes';
     import { Menu } from 'lucide-svelte/icons';
+    import AppLogoIcon from '@/components/AppLogoIcon.svelte';
+    import ThemeToggle from '@/components/ThemeToggle.svelte';
     import { Button } from '@/components/ui/button';
     import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-    import ThemeToggle from '@/components/ThemeToggle.svelte';
+    import { toUrl } from '@/lib/utils';
+    import { login } from '@/routes';
 
     let mobileOpen = $state(false);
 </script>
 
 <header class="fixed top-0 right-0 left-0 z-50 px-3 pt-3 md:px-5">
     <div
-        class="mx-auto flex h-16 max-w-7xl items-center justify-between rounded-full border border-border/70 bg-background/86 px-4 shadow-[0_18px_50px_rgba(18,18,18,0.08)] backdrop-blur-xl dark:shadow-[0_20px_55px_rgba(0,0,0,0.35)]"
+        class="mx-auto py-6 flex max-w-7xl items-center justify-between rounded-full border border-border/70 bg-background/86 px-8 shadow-[0_18px_50px_rgba(18,18,18,0.08)] backdrop-blur-xl dark:shadow-[0_20px_55px_rgba(0,0,0,0.35)]"
     >
-        <a href="/" class="flex items-center gap-2">
-            <div
-                class="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary text-sm font-bold text-primary-foreground shadow-[0_14px_36px_rgba(245,116,32,0.28)]"
-            >
-                E
-            </div>
-            <div class="leading-tight">
-                <span class="block text-base font-semibold tracking-[-0.03em]"
-                    >Erbitron</span
-                >
-                <span class="block text-[11px] text-muted-foreground"
-                    >Software solutions</span
-                >
-            </div>
+        <a href="/" class="flex items-center group">
+            <img
+                src="/images/logo/dark-logo.png"
+                alt="Erbitron"
+                class="h-10 w-auto transition-transform group-hover:scale-105 dark:hidden"
+            />
+            <img
+                src="/images/logo/light-logo.png"
+                alt="Erbitron"
+                class="hidden h-10 w-auto transition-transform group-hover:scale-105 dark:block"
+            />
         </a>
 
         <nav class="hidden items-center gap-8 md:flex">

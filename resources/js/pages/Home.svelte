@@ -1,571 +1,278 @@
 <script lang="ts">
-    import AppHead from '@/components/AppHead.svelte';
-    import PublicFooter from '@/components/PublicFooter.svelte';
-    import PublicHeader from '@/components/PublicHeader.svelte';
-    import { Button } from '@/components/ui/button';
-    import { toUrl } from '@/lib/utils';
-    import { login } from '@/routes';
     import {
-        Activity,
         ArrowRight,
-        BadgeCheck,
-        Blocks,
-        BriefcaseBusiness,
-        Globe,
+        Code2,
+        Cpu,
+        Database,
         HeartPulse,
-        Landmark,
+        Layout,
+        LineChart,
         MonitorSmartphone,
         ShoppingCart,
         Sparkles,
-        SwatchBook,
-        Workflow,
     } from 'lucide-svelte/icons';
+    import AppHead from '@/components/AppHead.svelte';
+    import AppLogoIcon from '@/components/AppLogoIcon.svelte';
+    import PublicFooter from '@/components/PublicFooter.svelte';
+    import PublicHeader from '@/components/PublicHeader.svelte';
+    import { Badge } from '@/components/ui/badge';
+    import { Button } from '@/components/ui/button';
+    import { Card } from '@/components/ui/card';
+    import { toUrl } from '@/lib/utils';
+    import { login } from '@/routes';
 
-    const coreServices = [
+    const services = [
         {
-            icon: SwatchBook,
-            title: 'Web Designing',
+            icon: Layout,
+            title: 'Digital Strategy & UI/UX',
             description:
-                'Modern marketing websites, landing pages, and brand-led interfaces designed to feel polished and convert with clarity.',
+                'We bridge the gap between business goals and user needs with high-fidelity, conversion-focused design systems.',
+            features: ['Visual Identity', 'User Experience Design', 'Product Prototyping'],
         },
         {
-            icon: Globe,
-            title: 'Web Development',
+            icon: Code2,
+            title: 'Full-Stack Engineering',
             description:
-                'Fast, scalable websites and web platforms built for businesses that need reliable performance and a clean user journey.',
+                'Robust, scalable, and maintainable software built with modern technologies like Laravel, Svelte, and Node.js.',
+            features: ['Custom Web Apps', 'SaaS Development', 'API Architecture'],
         },
         {
             icon: MonitorSmartphone,
-            title: 'App Development',
+            title: 'Mobile & Desktop',
             description:
-                'Mobile and desktop applications shaped around real workflows, clear navigation, and maintainable product architecture.',
+                'High-performance native and cross-platform applications tailored for seamless experiences across all devices.',
+            features: ['iOS & Android Apps', 'Electron Desktop Apps', 'Progressive Web Apps'],
         },
         {
-            icon: Blocks,
-            title: 'Custom Software Solutions',
+            icon: Database,
+            title: 'Cloud & Infrastructure',
             description:
-                'Purpose-built internal systems, dashboards, portals, and process automation tailored to your business operations.',
+                'Secure, automated, and globally distributed infrastructure designed to scale with your growing user base.',
+            features: ['AWS/Azure/GCP', 'DevOps Automation', 'Database Optimization'],
         },
     ];
 
-    const solutionAreas = [
+    const industries = [
         {
             icon: HeartPulse,
-            title: 'Hospital Applications',
-            summary:
-                'Patient flow, records access, appointment coordination, and operational visibility for healthcare teams.',
+            name: 'Healthcare',
+            description: 'HIPAA-compliant software for patient management and clinical operations.',
+        },
+        {
+            icon: LineChart,
+            name: 'FinTech',
+            description: 'Secure digital banking, payment processing, and financial reporting systems.',
         },
         {
             icon: ShoppingCart,
-            title: 'Online Shopping Carts',
-            summary:
-                'Storefronts, order management, stock visibility, payments, and customer-facing buying journeys.',
+            name: 'E-commerce',
+            description: 'Scalable storefronts and complex inventory management for global retailers.',
         },
         {
-            icon: Landmark,
-            title: 'Banking Web And App Platforms',
-            summary:
-                'Secure customer portals, finance dashboards, transaction flows, and polished digital banking experiences.',
-        },
-        {
-            icon: BriefcaseBusiness,
-            title: 'Business Operations Software',
-            summary:
-                'Admin panels, workflow tools, reporting systems, and software that reduces manual operational work.',
+            icon: Cpu,
+            name: 'Enterprise AI',
+            description: 'Custom AI/ML integrations and automation tools for large-scale operations.',
         },
     ];
 
-    const deliveryPoints = [
-        'Responsive websites and conversion-focused landing pages',
-        'Custom web applications for business operations and customer portals',
-        'Mobile app interfaces for service, commerce, and finance',
-        'Desktop applications for teams that need dedicated workflows',
-        'Hospital and healthcare management software experiences',
-        'Shopping cart, checkout, and e-commerce administration systems',
-        'Banking-inspired UI systems with trust, structure, and clarity',
-        'Ongoing UI refreshes, redesigns, and software modernization work',
-    ];
-
-    const workingStyle = [
+    const steps = [
         {
-            title: 'Understand the workflow',
-            detail: 'We start from the real business flow, the user roles, and the screens that matter most to day-to-day work.',
+            title: 'Discovery & Strategy',
+            detail: 'Deep dive into your business flow and user requirements.',
         },
         {
-            title: 'Design with intent',
-            detail: 'Interfaces are shaped around clarity, trust, and speed, with a visual system that feels current instead of generic.',
+            title: 'Design & Prototyping',
+            detail: 'Crafting the visual language and interaction model.',
         },
         {
-            title: 'Build the right product',
-            detail: 'From websites to operational platforms, each build is structured to scale cleanly and stay maintainable.',
+            title: 'Agile Development',
+            detail: 'Building with precision, transparency, and regular updates.',
         },
         {
-            title: 'Refine for long-term use',
-            detail: 'We keep the product consistent across screens, devices, and future feature growth so the experience stays strong.',
+            title: 'Launch & Scale',
+            detail: 'Deployment and continuous optimization for long-term growth.',
         },
     ];
 </script>
 
-<AppHead title="Erbitron | Software Solutions" />
+<AppHead title="Erbitron | High-Performance Digital Products" />
 
-<div class="min-h-screen bg-background text-foreground">
+<div class="min-h-screen bg-background text-foreground selection:bg-primary/20">
     <PublicHeader />
 
-    <section
-        class="relative overflow-hidden px-4 pt-28 pb-20 md:pt-36 md:pb-24"
-    >
-        <div
-            class="hero-noise pointer-events-none absolute inset-0 opacity-80"
-        ></div>
-        <div
-            class="pointer-events-none absolute -top-32 left-1/2 h-[26rem] w-[26rem] -translate-x-1/2 rounded-full bg-primary/18 blur-[110px] dark:bg-primary/22"
-        ></div>
-        <div
-            class="pointer-events-none absolute right-0 bottom-8 h-64 w-64 rounded-full bg-black/6 blur-[100px] dark:bg-black/50"
-        ></div>
+    <!-- Hero Section -->
+    <section class="relative flex min-h-[90vh] items-center justify-center overflow-hidden px-4 pt-32 pb-20 md:pt-48 md:pb-32">
+        <div class="hero-noise pointer-events-none absolute inset-0 opacity-40"></div>
+        <div class="pointer-events-none absolute -top-40 left-1/2 h-[40rem] w-[40rem] -translate-x-1/2 rounded-full bg-primary/15 blur-[120px] dark:bg-primary/10"></div>
+        <div class="pointer-events-none absolute -bottom-40 left-0 h-[30rem] w-[30rem] rounded-full bg-primary/5 blur-[100px] dark:bg-primary/5"></div>
 
-        <div
-            class="relative mx-auto flex max-w-7xl flex-col gap-12 lg:flex-row lg:items-center lg:gap-16"
-        >
-            <div class="max-w-3xl flex-1">
-                <div
-                    class="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-primary shadow-[0_18px_55px_rgba(245,116,32,0.12)] backdrop-blur dark:bg-black/55"
-                >
-                    <Sparkles class="h-3.5 w-3.5" />
-                    Modern software design and development
+        <div class="relative mx-auto max-w-7xl text-center">
+            <div class="mb-8 flex justify-center">
+                <div class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-xs font-semibold tracking-wide text-primary backdrop-blur-sm">
+                    <Sparkles class="h-3.5 w-3.5 animate-pulse" />
+                    <span>Redefining Software Engineering</span>
                 </div>
+            </div>
 
-                <h1
-                    class="max-w-4xl text-4xl font-semibold tracking-[-0.06em] text-balance md:text-6xl lg:text-7xl"
-                >
-                    Design-forward software for
-                    <span class="text-gradient-brand"
-                        >web, mobile, desktop, healthcare, commerce, and banking</span
-                    >.
-                </h1>
+            <h1 class="mx-auto max-w-5xl text-5xl font-bold tracking-tight text-balance md:text-7xl lg:text-8xl">
+                We build the <span class="text-gradient-brand">software</span> that builds your business.
+            </h1>
 
-                <p
-                    class="mt-6 max-w-2xl text-base leading-8 text-muted-foreground md:text-lg"
-                >
-                    Erbitron creates modern digital products for businesses that
-                    need stronger websites, sharper interfaces, and custom
-                    systems built around real work. From web designing to
-                    full-scale applications, the focus stays on clarity, speed,
-                    and long-term usability.
+            <p class="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-muted-foreground md:text-xl">
+                Erbitron is a full-cycle software agency. We partner with forward-thinking companies to design, build, and scale high-performance digital products.
+            </p>
+
+            <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <a href="mailto:hello@erbitron.com?subject=Project%20Inquiry" class="w-full sm:w-auto">
+                    <Button size="lg" class="h-14 w-full rounded-full bg-primary px-10 text-base font-bold text-primary-foreground shadow-2xl shadow-primary/25 hover:bg-primary/90 sm:w-auto">
+                        Discuss Your Project
+                        <ArrowRight class="ml-2 h-5 w-5" />
+                    </Button>
+                </a>
+                <a href="#services" class="w-full sm:w-auto">
+                    <Button size="lg" variant="outline" class="h-14 w-full rounded-full border-border/60 bg-background/50 px-10 text-base font-semibold backdrop-blur-md hover:bg-accent sm:w-auto">
+                        Explore Our Work
+                    </Button>
+                </a>
+            </div>
+
+            <div class="mt-20 grid grid-cols-2 gap-8 border-t border-border/40 pt-10 md:grid-cols-4 md:gap-12">
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-3xl font-bold tracking-tight md:text-4xl">100%</span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Native Code</span>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-3xl font-bold tracking-tight md:text-4xl">24/7</span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Expert Support</span>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-3xl font-bold tracking-tight md:text-4xl">50+</span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Global Products</span>
+                </div>
+                <div class="flex flex-col items-center gap-2">
+                    <span class="text-3xl font-bold tracking-tight md:text-4xl">5.0</span>
+                    <span class="text-xs font-semibold uppercase tracking-widest text-muted-foreground">Clutch Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="relative overflow-hidden px-4 py-24 md:py-32">
+        <div class="mx-auto max-w-7xl">
+            <div class="mb-16 max-w-3xl">
+                <Badge variant="outline" class="mb-4 rounded-full border-primary/30 px-4 py-1 text-primary">Capabilities</Badge>
+                <h2 class="text-4xl font-bold tracking-tight md:text-6xl">Full-service digital engineering tailored for scale.</h2>
+                <p class="mt-6 text-lg leading-relaxed text-muted-foreground">
+                    From initial concept to production-ready applications, we provide the technical expertise and design-forward thinking needed to dominate your market.
                 </p>
+            </div>
 
-                <div class="mt-8 flex flex-col gap-4 sm:flex-row">
-                    <a
-                        href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
-                        class="inline-flex"
-                    >
-                        <Button
-                            size="lg"
-                            class="h-12 rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-[0_18px_60px_rgba(245,116,32,0.3)] hover:bg-primary/90"
-                        >
-                            Discuss Your Project
-                            <ArrowRight class="h-4 w-4" />
-                        </Button>
-                    </a>
-
-                    <a href="#solutions" class="inline-flex">
-                        <Button
-                            size="lg"
-                            variant="outline"
-                            class="h-12 rounded-full border-border/70 bg-background/85 px-7 text-sm font-semibold backdrop-blur hover:bg-accent"
-                        >
-                            View Solutions
-                        </Button>
-                    </a>
-
-                    <a
-                        href={toUrl(login())}
-                        class="inline-flex items-center rounded-full px-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                        Client sign in
-                    </a>
-                </div>
-
-                <div class="mt-10 flex flex-wrap gap-3">
-                    {#each deliveryPoints.slice(0, 4) as point}
-                        <div
-                            class="rounded-full border border-border/70 bg-card/90 px-4 py-2 text-sm text-muted-foreground shadow-[0_12px_32px_rgba(15,15,15,0.05)] dark:shadow-none"
-                        >
-                            {point}
+            <div class="grid gap-6 md:grid-cols-2">
+                {#each services as service (service.title)}
+                    <div class="surface-panel group relative flex flex-col p-8 transition-all hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5">
+                        <div class="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+                            <service.icon class="h-7 w-7" />
                         </div>
+                        <h3 class="text-2xl font-bold tracking-tight">{service.title}</h3>
+                        <p class="mt-4 flex-grow text-muted-foreground leading-relaxed">{service.description}</p>
+                        
+                        <div class="mt-8 flex flex-wrap gap-2">
+                            {#each service.features as feature (feature)}
+                                <span class="rounded-full bg-secondary/50 px-3 py-1 text-xs font-medium text-foreground/80 dark:bg-secondary/20">
+                                    {feature}
+                                </span>
+                            {/each}
+                        </div>
+                    </div>
+                {/each}
+            </div>
+        </div>
+    </section>
+
+    <!-- Industry Expertise -->
+    <section id="solutions" class="bg-secondary/30 px-4 py-24 md:py-32 dark:bg-secondary/5">
+        <div class="mx-auto max-w-7xl">
+            <div class="flex flex-col gap-12 lg:flex-row lg:items-center">
+                <div class="flex-1">
+                    <Badge variant="outline" class="mb-4 rounded-full border-primary/30 px-4 py-1 text-primary text-sm">Industry Focus</Badge>
+                    <h2 class="text-4xl font-bold tracking-tight md:text-6xl">Specialized solutions for complex sectors.</h2>
+                    <p class="mt-6 text-lg leading-relaxed text-muted-foreground">
+                        We don't just build software; we build deep industry expertise into every line of code. Our solutions are designed to meet the unique challenges of modern regulated environments.
+                    </p>
+                    <div class="mt-10">
+                        <Button variant="link" class="p-0 text-primary font-bold text-lg hover:no-underline group">
+                            Learn more about our solutions
+                            <ArrowRight class="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                    </div>
+                </div>
+                
+                <div class="flex-1 grid gap-4 sm:grid-cols-2">
+                    {#each industries as industry (industry.name)}
+                        <Card class="border-border/60 bg-background/50 p-6 shadow-none backdrop-blur-sm">
+                            <div class="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                                <industry.icon class="h-5 w-5" />
+                            </div>
+                            <h4 class="text-xl font-bold">{industry.name}</h4>
+                            <p class="mt-2 text-sm text-muted-foreground leading-relaxed">{industry.description}</p>
+                        </Card>
                     {/each}
                 </div>
             </div>
-
-            <div class="relative flex-1">
-                <div class="surface-shell overflow-hidden p-4 md:p-6">
-                    <div
-                        class="rounded-[1.75rem] border border-white/70 bg-white/92 p-5 shadow-[0_24px_70px_rgba(22,22,22,0.12)] dark:border-white/10 dark:bg-[#111111]/92 dark:shadow-[0_32px_90px_rgba(0,0,0,0.45)]"
-                    >
-                        <div
-                            class="flex items-center justify-between border-b border-border/70 pb-4"
-                        >
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-[0_12px_30px_rgba(245,116,32,0.35)]"
-                                >
-                                    <Workflow class="h-5 w-5" />
-                                </div>
-                                <div>
-                                    <p class="text-sm font-semibold">
-                                        Solution Studio
-                                    </p>
-                                    <p class="text-xs text-muted-foreground">
-                                        Structured around real delivery scope
-                                    </p>
-                                </div>
-                            </div>
-                            <div
-                                class="rounded-full border border-primary/15 bg-primary/8 px-3 py-1 text-xs font-medium text-primary"
-                            >
-                                Orange-led theme
-                            </div>
-                        </div>
-
-                        <div class="mt-5 grid gap-4 md:grid-cols-[1.3fr_0.9fr]">
-                            <div class="surface-panel p-5">
-                                <div
-                                    class="flex items-center justify-between gap-3"
-                                >
-                                    <div>
-                                        <p
-                                            class="text-xs font-semibold uppercase tracking-[0.22em] text-primary"
-                                        >
-                                            Core Scope
-                                        </p>
-                                        <h2
-                                            class="mt-2 text-2xl font-semibold tracking-[-0.04em]"
-                                        >
-                                            Software solutions shaped for
-                                            business use
-                                        </h2>
-                                    </div>
-                                    <BadgeCheck class="h-8 w-8 text-primary" />
-                                </div>
-
-                                <div class="mt-6 grid gap-3">
-                                    {#each coreServices as service}
-                                        <div
-                                            class="rounded-[1.35rem] border border-border/70 bg-background/70 p-4 dark:bg-black/35"
-                                        >
-                                            <div class="flex items-start gap-3">
-                                                <div
-                                                    class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-primary/12 text-primary"
-                                                >
-                                                    <service.icon
-                                                        class="h-5 w-5"
-                                                    />
-                                                </div>
-                                                <div class="space-y-1">
-                                                    <h3 class="font-semibold">
-                                                        {service.title}
-                                                    </h3>
-                                                    <p
-                                                        class="text-sm leading-6 text-muted-foreground"
-                                                    >
-                                                        {service.description}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {/each}
-                                </div>
-                            </div>
-
-                            <div class="grid gap-4">
-                                <div class="surface-panel p-5">
-                                    <p
-                                        class="text-xs font-semibold uppercase tracking-[0.22em] text-primary"
-                                    >
-                                        Coverage
-                                    </p>
-                                    <div class="mt-4 space-y-3">
-                                        {#each solutionAreas.slice(0, 2) as area}
-                                            <div
-                                                class="rounded-[1.2rem] border border-border/70 bg-background/70 p-4 dark:bg-black/35"
-                                            >
-                                                <div
-                                                    class="mb-2 flex items-center gap-3"
-                                                >
-                                                    <div
-                                                        class="flex h-9 w-9 items-center justify-center rounded-2xl bg-primary/10 text-primary"
-                                                    >
-                                                        <area.icon
-                                                            class="h-4.5 w-4.5"
-                                                        />
-                                                    </div>
-                                                    <h3 class="font-semibold">
-                                                        {area.title}
-                                                    </h3>
-                                                </div>
-                                                <p
-                                                    class="text-sm leading-6 text-muted-foreground"
-                                                >
-                                                    {area.summary}
-                                                </p>
-                                            </div>
-                                        {/each}
-                                    </div>
-                                </div>
-
-                                <div
-                                    class="overflow-hidden rounded-[1.7rem] border border-primary/15 bg-primary p-5 text-primary-foreground shadow-[0_18px_50px_rgba(245,116,32,0.25)]"
-                                >
-                                    <p
-                                        class="text-xs font-semibold uppercase tracking-[0.22em] text-white/75"
-                                    >
-                                        Built for modern delivery
-                                    </p>
-                                    <p
-                                        class="mt-3 text-xl font-semibold tracking-[-0.04em]"
-                                    >
-                                        Cleaner UI, stronger contrast, and
-                                        sharper product presentation across both
-                                        light and dark themes.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <section id="services" class="px-4 py-16 md:py-24">
-        <div class="mx-auto max-w-7xl">
-            <div class="max-w-3xl">
-                <p
-                    class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
-                >
-                    Services
-                </p>
-                <h2
-                    class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
-                >
-                    Design and development services that fit how businesses
-                    actually operate.
-                </h2>
-                <p
-                    class="mt-5 max-w-2xl text-base leading-8 text-muted-foreground"
-                >
-                    The work spans branded websites, custom platforms,
-                    operational software, and product interfaces that need to be
-                    trusted by both end users and internal teams.
-                </p>
-            </div>
+    <!-- Process Section -->
+    <section id="approach" class="px-4 py-24 md:py-32">
+        <div class="mx-auto max-w-7xl text-center">
+            <Badge variant="outline" class="mb-4 rounded-full border-primary/30 px-4 py-1 text-primary">Methodology</Badge>
+            <h2 class="mx-auto max-w-3xl text-4xl font-bold tracking-tight md:text-6xl">The Erbitron Process</h2>
+            <p class="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground">
+                A structured, transparent approach designed for speed and reliability.
+            </p>
 
-            <div class="mt-12 grid gap-5 lg:grid-cols-2">
-                {#each coreServices as service}
-                    <div class="surface-panel p-6 md:p-7">
-                        <div
-                            class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary"
-                        >
-                            <service.icon class="h-5 w-5" />
+            <div class="mt-20 grid gap-8 md:grid-cols-4">
+                {#each steps as step, i (step.title)}
+                    <div class="relative flex flex-col items-center">
+                        <div class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary text-2xl font-bold text-primary-foreground shadow-xl shadow-primary/20">
+                            {i + 1}
                         </div>
-                        <h3
-                            class="mt-6 text-2xl font-semibold tracking-[-0.04em]"
-                        >
-                            {service.title}
-                        </h3>
-                        <p class="mt-3 text-sm leading-7 text-muted-foreground">
-                            {service.description}
-                        </p>
+                        {#if i < steps.length - 1}
+                            <div class="absolute top-8 left-[calc(50%+2rem)] hidden h-0.5 w-[calc(100%-4rem)] bg-border md:block"></div>
+                        {/if}
+                        <h3 class="text-xl font-bold">{step.title}</h3>
+                        <p class="mt-3 text-sm text-muted-foreground leading-relaxed">{step.detail}</p>
                     </div>
                 {/each}
             </div>
         </div>
     </section>
 
-    <section id="solutions" class="px-4 py-16 md:py-24">
+    <!-- Final CTA -->
+    <section class="px-4 pb-32">
         <div class="mx-auto max-w-7xl">
-            <div
-                class="mb-12 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
-            >
-                <div class="max-w-3xl">
-                    <p
-                        class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
-                    >
-                        Solution Areas
+            <div class="relative overflow-hidden rounded-[2.5rem] bg-foreground px-6 py-20 text-background md:px-20 md:py-28 dark:bg-card">
+                <div class="hero-noise pointer-events-none absolute inset-0 opacity-10"></div>
+                <div class="pointer-events-none absolute -right-40 -top-40 h-[40rem] w-[40rem] rounded-full bg-primary/20 blur-[120px]"></div>
+                
+                <div class="relative z-10 flex flex-col items-center text-center">
+                    <div class="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
+                        <AppLogoIcon class="h-10 w-10 fill-current" />
+                    </div>
+                    <h2 class="max-w-3xl text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">Ready to build something <span class="text-primary">extraordinary</span>?</h2>
+                    <p class="mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
+                        Whether you're a startup or an enterprise, we have the team and the tools to bring your digital vision to life.
                     </p>
-                    <h2
-                        class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
-                    >
-                        Focused products for sectors that need structure, trust,
-                        and speed.
-                    </h2>
-                </div>
-                <p class="max-w-2xl text-sm leading-7 text-muted-foreground">
-                    Each solution area is framed with the same goal: clean
-                    design, understandable workflows, and a product that feels
-                    reliable from the first screen.
-                </p>
-            </div>
-
-            <div class="grid gap-5 md:grid-cols-2">
-                {#each solutionAreas as area}
-                    <div class="surface-panel p-6 md:p-7">
-                        <div class="flex items-start gap-4">
-                            <div
-                                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary"
-                            >
-                                <area.icon class="h-5 w-5" />
-                            </div>
-                            <div>
-                                <h3
-                                    class="text-xl font-semibold tracking-[-0.04em]"
-                                >
-                                    {area.title}
-                                </h3>
-                                <p
-                                    class="mt-3 text-sm leading-7 text-muted-foreground"
-                                >
-                                    {area.summary}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
-
-    <section class="px-4 py-16 md:py-24">
-        <div class="mx-auto max-w-7xl">
-            <div class="surface-shell p-6 md:p-8">
-                <div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:gap-12">
-                    <div>
-                        <p
-                            class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
-                        >
-                            Delivery Scope
-                        </p>
-                        <h2
-                            class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
-                        >
-                            What Erbitron can deliver across your product
-                            landscape.
-                        </h2>
-                        <p
-                            class="mt-5 text-base leading-8 text-muted-foreground"
-                        >
-                            The scope is broad enough for redesigns, greenfield
-                            products, business platforms, and specialized
-                            software initiatives that need a more modern visual
-                            and interaction layer.
-                        </p>
-                    </div>
-
-                    <div class="grid gap-3 sm:grid-cols-2">
-                        {#each deliveryPoints as point}
-                            <div
-                                class="rounded-[1.4rem] border border-border/70 bg-card/92 p-4 text-sm leading-6 text-muted-foreground shadow-[0_14px_34px_rgba(15,15,15,0.05)] dark:bg-card/80 dark:shadow-none"
-                            >
-                                <div class="mb-3 flex items-center gap-2">
-                                    <Activity class="h-4 w-4 text-primary" />
-                                    <span class="font-semibold text-foreground">
-                                        Included
-                                    </span>
-                                </div>
-                                {point}
-                            </div>
-                        {/each}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="approach" class="px-4 py-16 md:py-24">
-        <div class="mx-auto max-w-7xl">
-            <div class="max-w-3xl">
-                <p
-                    class="text-sm font-semibold uppercase tracking-[0.26em] text-primary"
-                >
-                    Working Style
-                </p>
-                <h2
-                    class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
-                >
-                    A product process centered on workflow clarity and modern
-                    presentation.
-                </h2>
-            </div>
-
-            <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-                {#each workingStyle as step, index}
-                    <div class="surface-panel p-6">
-                        <div
-                            class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-sm font-semibold text-primary-foreground"
-                        >
-                            0{index + 1}
-                        </div>
-                        <h3 class="text-lg font-semibold tracking-[-0.03em]">
-                            {step.title}
-                        </h3>
-                        <p class="mt-3 text-sm leading-7 text-muted-foreground">
-                            {step.detail}
-                        </p>
-                    </div>
-                {/each}
-            </div>
-        </div>
-    </section>
-
-    <section class="px-4 pt-10 pb-20 md:pt-14 md:pb-28">
-        <div class="mx-auto max-w-7xl">
-            <div
-                class="overflow-hidden rounded-[2rem] border border-primary/15 bg-[linear-gradient(135deg,rgba(245,116,32,0.98),rgba(255,151,70,0.92))] px-6 py-10 text-primary-foreground shadow-[0_22px_70px_rgba(245,116,32,0.28)] md:px-10 md:py-12"
-            >
-                <div
-                    class="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between"
-                >
-                    <div class="max-w-3xl">
-                        <p
-                            class="text-sm font-semibold uppercase tracking-[0.26em] text-white/75"
-                        >
-                            Start a project
-                        </p>
-                        <h2
-                            class="mt-4 text-3xl font-semibold tracking-[-0.05em] md:text-5xl"
-                        >
-                            Need a modern website or a custom software product
-                            aligned with your business scope?
-                        </h2>
-                        <p
-                            class="mt-4 max-w-2xl text-sm leading-7 text-white/85"
-                        >
-                            Erbitron can help shape the interface, the product
-                            structure, and the delivery direction for your next
-                            website, application, or software platform.
-                        </p>
-                    </div>
-
-                    <div class="flex flex-col gap-3 sm:flex-row">
-                        <a
-                            href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
-                            class="inline-flex"
-                        >
-                            <Button
-                                size="lg"
-                                class="h-12 rounded-full bg-black px-7 text-sm font-semibold text-white shadow-none hover:bg-black/85 dark:bg-white dark:text-black dark:hover:bg-white/90"
-                            >
-                                Contact Erbitron
+                    <div class="mt-12 flex flex-col gap-4 sm:flex-row">
+                        <a href="mailto:hello@erbitron.com?subject=Project%20Inquiry">
+                            <Button size="lg" class="h-14 rounded-full bg-primary px-10 text-base font-bold text-primary-foreground hover:bg-primary/90">
+                                Start Your Project Today
                             </Button>
                         </a>
-
-                        <a href={toUrl(login())} class="inline-flex">
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                class="h-12 rounded-full border-white/40 bg-white/10 px-7 text-sm font-semibold text-white hover:bg-white/14"
-                            >
-                                Client Access
+                        <a href={toUrl(login())}>
+                            <Button size="lg" variant="outline" class="h-14 rounded-full border-background/20 bg-background/5 px-10 text-base font-semibold hover:bg-background/10">
+                                Client Dashboard
                             </Button>
                         </a>
                     </div>
