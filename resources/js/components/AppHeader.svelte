@@ -101,9 +101,18 @@
                     <SheetContent side="left" class="w-[300px] p-6">
                         <SheetTitle class="sr-only">Navigation menu</SheetTitle>
                         <SheetHeader class="flex justify-start text-left">
-                            <AppLogoIcon
-                                class="size-6 fill-current text-black dark:text-white"
-                            />
+                            <div class="flex items-center">
+                                <img
+                                    src="/images/logo/dark-logo.png"
+                                    alt="Erbitron"
+                                    class="h-8 w-auto dark:hidden"
+                                />
+                                <img
+                                    src="/images/logo/light-logo.png"
+                                    alt="Erbitron"
+                                    class="hidden h-8 w-auto dark:block"
+                                />
+                            </div>
                         </SheetHeader>
                         <div
                             class="flex h-full flex-1 flex-col justify-between space-y-4 pt-6 pb-10"

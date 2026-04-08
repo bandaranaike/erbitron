@@ -257,8 +257,17 @@
                 <div class="pointer-events-none absolute -right-40 -top-40 h-[40rem] w-[40rem] rounded-full bg-primary/20 blur-[120px]"></div>
                 
                 <div class="relative z-10 flex flex-col items-center text-center">
-                    <div class="mb-8 flex h-16 w-16 items-center justify-center rounded-2xl bg-primary text-primary-foreground">
-                        <AppLogoIcon class="h-10 w-10 fill-current" />
+                    <div class="mb-8 flex h-12 items-center justify-center">
+                        <img
+                            src="/images/logo/dark-logo.png"
+                            alt="Erbitron"
+                            class="h-12 w-auto dark:hidden"
+                        />
+                        <img
+                            src="/images/logo/light-logo.png"
+                            alt="Erbitron"
+                            class="hidden h-12 w-auto dark:block"
+                        />
                     </div>
                     <h2 class="max-w-3xl text-4xl font-bold tracking-tight md:text-6xl lg:text-7xl">Ready to build something <span class="text-primary">extraordinary</span>?</h2>
                     <p class="mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
