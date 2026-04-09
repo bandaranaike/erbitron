@@ -1,11 +1,8 @@
 <script lang="ts">
     import { Menu } from 'lucide-svelte/icons';
-    import AppLogoIcon from '@/components/AppLogoIcon.svelte';
     import ThemeToggle from '@/components/ThemeToggle.svelte';
     import { Button } from '@/components/ui/button';
     import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-    import { toUrl } from '@/lib/utils';
-    import { login } from '@/routes';
 
     let mobileOpen = $state(false);
 </script>
@@ -51,11 +48,6 @@
         <div class="flex items-center gap-2">
             <ThemeToggle />
             <div class="hidden items-center gap-2 md:flex">
-                <a href={toUrl(login())} class="inline-flex">
-                    <Button variant="ghost" size="sm" class="rounded-full"
-                        >Sign In</Button
-                    >
-                </a>
                 <a
                     href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
                     class="inline-flex"
@@ -109,13 +101,6 @@
                             Approach
                         </a>
                         <hr class="my-2" />
-                        <a href={toUrl(login())} class="inline-flex">
-                            <Button
-                                variant="outline"
-                                class="w-full justify-start rounded-full"
-                                >Sign In</Button
-                            >
-                        </a>
                         <a
                             href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
                             class="inline-flex"
