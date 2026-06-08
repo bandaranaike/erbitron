@@ -4,7 +4,7 @@
     export const layout = {
         breadcrumbs: [
             {
-                title: 'Dashboard',
+                title: 'Dashboard 222',
                 href: dashboard(),
             },
         ],

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 
 Route::inertia('/', 'Home')->name('home');
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware([
     'auth',

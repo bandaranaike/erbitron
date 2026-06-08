@@ -1,5 +1,6 @@
 <script lang="ts">
-    import AppLogoIcon from '@/components/AppLogoIcon.svelte';
+    import { toUrl } from '@/lib/utils';
+    import { contact } from '@/routes';
 </script>
 
 <footer class="border-t border-border/70 backdrop-blur-md bg-[#f3f5f5] dark:bg-[#06070a]">
@@ -28,22 +29,28 @@
 
             <nav class="flex flex-col gap-3 text-sm">
                 <a
-                    href="#services"
+                    href="/#services"
                     class="text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Services
                 </a>
                 <a
-                    href="#solutions"
+                    href="/#solutions"
                     class="text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Solutions
                 </a>
                 <a
-                    href="#approach"
+                    href="/#approach"
                     class="text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Approach
+                </a>
+                <a
+                    href={toUrl(contact())}
+                    class="text-muted-foreground transition-colors hover:text-foreground"
+                >
+                    Contact
                 </a>
             </nav>
 
@@ -56,7 +63,7 @@
                     hello@erbitron.com
                 </a>
                 <a
-                    href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
+                    href={toUrl(contact())}
                     class="block text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Start a project discussion

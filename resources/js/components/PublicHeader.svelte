@@ -3,13 +3,16 @@
     import ThemeToggle from '@/components/ThemeToggle.svelte';
     import { Button } from '@/components/ui/button';
     import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+    import { toUrl } from '@/lib/utils';
+    import { contact } from '@/routes';
 
     let mobileOpen = $state(false);
 
     const mobileLinks = [
-        { href: '#services', label: 'Services' },
-        { href: '#solutions', label: 'Solutions' },
-        { href: '#approach', label: 'Approach' },
+        { href: '/#services', label: 'Services' },
+        { href: '/#solutions', label: 'Solutions' },
+        { href: '/#approach', label: 'Approach' },
+        { href: toUrl(contact()), label: 'Contact' },
     ];
 
     function closeMobileMenu(): void {
@@ -37,22 +40,28 @@
 
             <nav class="ml-auto hidden items-center gap-8 md:flex">
                 <a
-                    href="#services"
+                    href="/#services"
                     class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Services
                 </a>
                 <a
-                    href="#solutions"
+                    href="/#solutions"
                     class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Solutions
                 </a>
                 <a
-                    href="#approach"
+                    href="/#approach"
                     class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
                 >
                     Approach
+                </a>
+                <a
+                    href={toUrl(contact())}
+                    class="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                >
+                    Contact
                 </a>
             </nav>
 
@@ -76,7 +85,7 @@
 
                 <div class="hidden items-center gap-2 md:flex">
                     <a
-                        href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
+                        href={toUrl(contact())}
                         class="inline-flex"
                     >
                         <Button
@@ -127,7 +136,7 @@
                     </div>
 
                     <a
-                        href="mailto:hello@erbitron.com?subject=Project%20Inquiry"
+                        href={toUrl(contact())}
                         class="mt-8 inline-flex"
                         onclick={closeMobileMenu}
                     >

@@ -18,7 +18,7 @@
     import { Button } from '@/components/ui/button';
     import { Card } from '@/components/ui/card';
     import { toUrl } from '@/lib/utils';
-    import { login } from '@/routes';
+    import { contact, login } from '@/routes';
 
     const services = [
         {
@@ -137,7 +137,7 @@
             </p>
 
             <div class="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <a href="mailto:hello@erbitron.com?subject=Project%20Inquiry" class="w-full sm:w-auto">
+                <a href={toUrl(contact())} class="w-full sm:w-auto">
                     <Button size="lg" class="h-14 w-full rounded-full bg-primary px-10 text-base font-bold text-primary-foreground shadow-2xl shadow-primary/25 hover:bg-primary/90 sm:w-auto">
                         Discuss Your Project
                         <ArrowRight class="ml-2 h-5 w-5" />
@@ -288,7 +288,7 @@
                         Whether you're a startup or an enterprise, we have the team and the tools to bring your digital vision to life.
                     </p>
                     <div class="mt-12 flex flex-col gap-4 sm:flex-row">
-                        <a href="mailto:hello@erbitron.com?subject=Project%20Inquiry">
+                        <a href={toUrl(contact())}>
                             <Button size="lg" class="h-14 rounded-full bg-primary px-10 text-base font-bold text-primary-foreground hover:bg-primary/90">
                                 Start Your Project Today
                             </Button>
