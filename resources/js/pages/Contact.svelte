@@ -143,46 +143,36 @@
                     Share the challenge, product idea, or workflow you want to improve. We will review the details and respond with the next practical step.
                 </p>
 
-                <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
-                    <div class="surface-panel flex items-start gap-4 p-5">
-                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                            <Mail class="h-5 w-5" />
+                <div class="mt-10 mb-10">
+                    <div class="surface-panel grid gap-5 p-5 sm:grid-cols-2">
+                        <div class="flex items-start gap-4">
+                            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                                <Mail class="h-5 w-5" />
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-semibold">Email</p>
+                                <a
+                                    href="mailto:erbitronsoftware@gmail.com"
+                                    class="mt-1 block break-words text-sm text-muted-foreground transition-colors hover:text-foreground"
+                                >
+                                    erbitronsoftware@gmail.com
+                                </a>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-semibold">Email</p>
-                            <a
-                                href="mailto:erbitronsoftware@gmail.com"
-                                class="mt-1 block text-sm text-muted-foreground transition-colors hover:text-foreground"
-                            >
-                                erbitronsoftware@gmail.com
-                            </a>
-                        </div>
-                    </div>
 
-                    <div class="surface-panel flex items-start gap-4 p-5">
-                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                            <Phone class="h-5 w-5" />
-                        </div>
-                        <div>
-                            <p class="font-semibold">Phone</p>
-                            <a
-                                href="tel:+94718708718"
-                                class="mt-1 block text-sm text-muted-foreground transition-colors hover:text-foreground"
-                            >
-                                +94 718 708 718
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="surface-panel flex items-start gap-4 p-5">
-                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
-                            <MessageSquare class="h-5 w-5" />
-                        </div>
-                        <div>
-                            <p class="font-semibold">Project inquiries</p>
-                            <p class="mt-1 text-sm leading-relaxed text-muted-foreground">
-                                Custom software, SaaS products, web apps, automation, and UI refresh work.
-                            </p>
+                        <div class="flex items-start gap-4 border-t border-border/70 pt-5 sm:border-t-0 sm:border-l sm:pt-0 sm:pl-5">
+                            <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                                <Phone class="h-5 w-5" />
+                            </div>
+                            <div class="min-w-0">
+                                <p class="font-semibold">Phone</p>
+                                <a
+                                    href="tel:+94718708718"
+                                    class="mt-1 block text-sm text-muted-foreground transition-colors hover:text-foreground"
+                                >
+                                    +94 718 708 718
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
