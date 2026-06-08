@@ -151,10 +151,25 @@
                         <div>
                             <p class="font-semibold">Email</p>
                             <a
-                                href="mailto:hello@erbitron.com"
+                                href="mailto:erbitronsoftware@gmail.com"
                                 class="mt-1 block text-sm text-muted-foreground transition-colors hover:text-foreground"
                             >
-                                hello@erbitron.com
+                                erbitronsoftware@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="surface-panel flex items-start gap-4 p-5">
+                        <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+                            <Phone class="h-5 w-5" />
+                        </div>
+                        <div>
+                            <p class="font-semibold">Phone</p>
+                            <a
+                                href="tel:+94718708718"
+                                class="mt-1 block text-sm text-muted-foreground transition-colors hover:text-foreground"
+                            >
+                                +94 718 708 718
                             </a>
                         </div>
                     </div>

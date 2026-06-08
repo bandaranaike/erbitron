@@ -57,10 +57,16 @@
             <div class="space-y-3 text-sm">
                 <p class="font-medium text-foreground">Connect</p>
                 <a
-                    href="mailto:hello@erbitron.com"
+                    href="mailto:erbitronsoftware@gmail.com"
                     class="block text-muted-foreground transition-colors hover:text-foreground"
                 >
-                    hello@erbitron.com
+                    erbitronsoftware@gmail.com
+                </a>
+                <a
+                    href="tel:+94718708718"
+                    class="block text-muted-foreground transition-colors hover:text-foreground"
+                >
+                    +94 718 708 718
                 </a>
                 <a
                     href={toUrl(contact())}
